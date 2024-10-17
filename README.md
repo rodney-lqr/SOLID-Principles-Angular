@@ -1,5 +1,3 @@
-<img width="314" alt="image" src="https://github.com/user-attachments/assets/db6d3223-628b-4470-8f25-8438d1044476"># SOLID-Principles-Angular
-
 ![image](https://github.com/user-attachments/assets/feed0147-5e33-4c09-a0e6-6c5f0bfec876)
 Solid Principles in Angular
 
