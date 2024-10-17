@@ -1,5 +1,6 @@
-# SOLID-Principles-Angular
+<img width="314" alt="image" src="https://github.com/user-attachments/assets/db6d3223-628b-4470-8f25-8438d1044476"># SOLID-Principles-Angular
 
+![image](https://github.com/user-attachments/assets/feed0147-5e33-4c09-a0e6-6c5f0bfec876)
 Solid Principles in Angular
 
 What is SOLID Principles in Angular?
@@ -30,47 +31,13 @@ Suppose we have a component that manages both the user login process and renders
 
 Without SRP:
 
-export class UserComponent {
-  user: any;
+<img width="502" alt="image" src="https://github.com/user-attachments/assets/b81ce0fa-6831-4930-844e-0c7e3627b7c2">
 
-  login(username: string, password: string): void {
-    // Logic to authenticate user
-    // Violates SRP: This component is handling both UI and business logic
-    this.user = { username: username, isAuthenticated: true };
-  }
-
-  displayUser(): void {
-    // Display user details in the UI
-  }
-}
 
 With SRP:
 
-// AuthService is responsible for authentication only
-@Injectable({
-  providedIn: 'root'
-})
-export class AuthService {
-  login(username: string, password: string): any {
-    // Handle authentication logic
-    return { username: username, isAuthenticated: true };
-  }
-}
+<img width="314" alt="image" src="https://github.com/user-attachments/assets/57a31226-b2ad-4acd-8305-afadd8d664cf">
 
-// UserComponent is responsible for rendering the user interface
-export class UserComponent {
-  user: any;
-
-  constructor(private authService: AuthService) {}
-
-  login(username: string, password: string): void {
-    this.user = this.authService.login(username, password);
-  }
-
-  displayUser(): void {
-    // Handle user UI display
-  }
-}
 Real-world Use Case:
 
 Think of a restaurant. The chef is responsible for cooking food, and the waiter is responsible for serving the food. The chef doesn’t serve, and the waiter doesn’t cook. In Angular, services are like chefs (they handle logic), and components are like waiters (they manage the UI).
@@ -86,43 +53,9 @@ Example:
 Suppose we have a PaymentService that handles different types of payments. Instead of modifying the original class every time a new payment method is added, we can create new classes that extend it.
 
 Without OCP:
-
-export class PaymentService {
-  processPayment(type: string): void {
-    if (type === 'CreditCard') {
-      // Handle credit card payment
-    } else if (type === 'Paypal') {
-      // Handle PayPal payment
-    } else {
-      throw new Error('Unknown payment method');
-    }
-  }
-}
+<img width="316" alt="image" src="https://github.com/user-attachments/assets/968d4ab7-532e-4d15-b227-73a56bed7a41">
 With OCP:
-export interface PaymentMethod {
-  processPayment(): void;
-}
-
-// CreditCardPayment class
-export class CreditCardPayment implements PaymentMethod {
-  processPayment(): void {
-    // Handle credit card payment
-  }
-}
-
-// PayPalPayment class
-export class PayPalPayment implements PaymentMethod {
-  processPayment(): void {
-    // Handle PayPal payment
-  }
-}
-
-// PaymentService class, open for extension, closed for modification
-export class PaymentService {
-  processPayment(paymentMethod: PaymentMethod): void {
-    paymentMethod.processPayment();
-  }
-}
+<img width="317" alt="image" src="https://github.com/user-attachments/assets/2fb4fcbe-9f23-4fcc-8c05-c59795021cd2">
 Real-world Use Case:
 
 In a bank, different departments (savings, loans, credit cards) deal with various transactions. If the bank introduces a new type of transaction, it doesn’t alter the core structure of these departments but adds a new department to handle it. Similarly, Angular services should allow new functionality (new departments) without changing existing services (departments).
