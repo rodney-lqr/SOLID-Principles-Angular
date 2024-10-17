@@ -51,9 +51,13 @@ Example:
 Suppose we have a PaymentService that handles different types of payments. Instead of modifying the original class every time a new payment method is added, we can create new classes that extend it.
 
 Without OCP:
+
 <img width="316" alt="image" src="https://github.com/user-attachments/assets/968d4ab7-532e-4d15-b227-73a56bed7a41">
+
 With OCP:
+
 <img width="317" alt="image" src="https://github.com/user-attachments/assets/2fb4fcbe-9f23-4fcc-8c05-c59795021cd2">
+
 Real-world Use Case:
 
 In a bank, different departments (savings, loans, credit cards) deal with various transactions. If the bank introduces a new type of transaction, it doesn’t alter the core structure of these departments but adds a new department to handle it. Similarly, Angular services should allow new functionality (new departments) without changing existing services (departments).
@@ -70,31 +74,12 @@ If we have a BaseComponent and a DerivedComponent, the derived component should 
 
 Violating LSP:
 
-export class BaseComponent {
-  render(): void {
-    console.log('Rendering BaseComponent');
-  }
-}
-
-export class DerivedComponent extends BaseComponent {
-  render(): void {
-    throw new Error('Rendering not supported');
-  }
-}
+<img width="318" alt="image" src="https://github.com/user-attachments/assets/eaa1e893-adfb-4b99-950e-151a7e0449fd">
 
 Complying with LSP:
 
-export class BaseComponent {
-  render(): void {
-    console.log('Rendering BaseComponent');
-  }
-}
+<img width="319" alt="image" src="https://github.com/user-attachments/assets/9a3b3db3-e09c-42ca-886a-ea10d892e04a">
 
-export class DerivedComponent extends BaseComponent {
-  render(): void {
-    console.log('Rendering DerivedComponent');
-  }
-}
 
 Real-world Use Case:
 
@@ -112,20 +97,13 @@ Suppose we have a UserService that handles user data but also includes methods f
 
 Without ISP:
 
-export interface UserService {
-  getUserDetails(): any;
-  updateUserSettings(settings: any): void;
-}
+<img width="479" alt="image" src="https://github.com/user-attachments/assets/016251e4-74da-440b-92ed-3be8b902113b">
+
 
 With ISP:
 
-export interface UserDetailsService {
-  getUserDetails(): any;
-}
+<img width="473" alt="image" src="https://github.com/user-attachments/assets/68e56791-80bd-495d-95be-ea9e3207f3be">
 
-export interface UserSettingsService {
-  updateUserSettings(settings: any): void;
-}
 
 Real-world Use Case:
 
