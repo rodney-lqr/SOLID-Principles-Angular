@@ -121,46 +121,13 @@ Suppose a Component directly depends on a DatabaseService. This tightly couples 
 
 Without DIP:
 
+<img width="473" alt="image" src="https://github.com/user-attachments/assets/d7ff4f6b-5756-4ea4-ba04-41a454eee3b2">
 
-Copy
 
-Copy
-export class DatabaseService {
-  getData(): any {
-    // Logic to get data from a specific database
-  }
-}
-
-export class DataComponent {
-  constructor(private dbService: DatabaseService) {}
-
-  loadData(): void {
-    this.dbService.getData();
-  }
-}
 With DIP:
 
+<img width="475" alt="image" src="https://github.com/user-attachments/assets/1d5009bd-ac75-437a-b62f-f8ed11e74ba7">
 
-Copy
-
-Copy
-export interface DataSource {
-  getData(): any;
-}
-
-export class DatabaseService implements DataSource {
-  getData(): any {
-    // Logic to get data from a specific database
-  }
-}
-
-export class DataComponent {
-  constructor(private dataSource: DataSource) {}
-
-  loadData(): void {
-    this.dataSource.getData();
-  }
-}
 
 Real-world Use Case:
 
